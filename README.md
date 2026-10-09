@@ -1,50 +1,51 @@
 # Linghui Meng — academic homepage
 
-A responsive, self-contained HTML homepage for GitHub Pages. No package installation or build step is required. The existing `_config.yml` and all PDF/image assets are retained.
+A single-file, responsive academic homepage for GitHub Pages. No dependencies or build step. White background, compact navigation, a profile sidebar, and a text-first research column are inspired by the requested reference at https://xuefuzhao.github.io/. All wording, portrait and documents are Linghui Meng's own existing materials. No reference-site content or code was copied.
 
-## Preview
+## Preview and maintenance
 
-Open `index.html` in a browser, or run `python3 -m http.server 8000` in this directory and visit `http://localhost:8000`. The delivery also includes a separate portable preview with an embedded portrait and absolute links to the existing PDFs; that preview is not the deployment source.
+Open `index.html` or serve this directory with `python3 -m http.server 8000`.
 
-## Maintain
+The separately delivered portable preview embeds the portrait and links to PDFs already hosted on the live homepage. It is not the deployment source. Source deployment uses relative PDF/image URLs.
 
-- Edit biography and publications directly in `index.html`.
-- Each publication uses `data-topic="reasoning"`, `"multi-agent"`, or `"other"` for the accessible filters. All papers remain visible when JavaScript is disabled.
-- Update the two `counter-reset: paper` values to one more than the number of entries when adding or removing a paper. The live filter count is calculated automatically.
-- Keep asset filenames unchanged or update their matching links. URLs with spaces are percent-encoded.
-- CSS is inline so the homepage remains easy to edit as a single file. There are no external fonts, frameworks, or script dependencies.
-- The original Flag Counter is retained and remains a third-party resource.
+- Edit biography, experience, publications and archives directly in `index.html`.
+- Publication years mean venue publication year, or preprint release year for a preprint. Sort by that year, newest first. Papers within the same year are not date-ranked.
+- Keep publication status explicit. Do not turn preprint or accepted manuscript into a conference/journal publication without verification.
+- Every publication has one `data-topic`: `reasoning`, `multi-agent`, or `other`. Filtering and counts are progressive enhancement; all papers remain visible with JavaScript disabled and in print.
+- Add confirmed dates to archived resources. Mark unavailable dates `Undated`; never use a file modification timestamp as a document's creation date.
+- Update the footer's page-update date only when page content changes. This date does not indicate the age of linked materials.
+- Replace old CV files only with a genuinely updated CV. Until then, the 2023 English CV and undated Chinese CV remain clearly archived.
+- Preserve asset filenames or update matching links. There are no external fonts, frameworks, or script dependencies. Flag Counter remains a third-party resource.
 
 ## Checks
 
 ```sh
 python3 tests/check_homepage.py
+python3 tests/check_dates.py
 node tests/check_filters.cjs
 git diff --check
 ```
 
-These check HTML nesting, local file references, fragment targets, duplicate IDs, headings, metadata and accessibility hooks, plus filter behavior, repeated selections and the live count. They do not replace browser/assistive-technology testing.
+Checks cover nesting, local file references, fragment targets, duplicate IDs, metadata/accessibility hooks, date ordering and archive labels, plus filter logic and repeated selections.
 
-## Review notes — 9 October 2026
+## Date review — 9 October 2026
 
-- PhD completion in 2024 was confirmed by Linghui Meng. No current employer is inferred.
-- Added the user-confirmed 2024–2025 ERNIE Thinking experience: “Led the integration of reinforcement learning (RL) updates into the ERNIE Thinking model.” No employer or further responsibilities are inferred.
-- The Google Scholar profile is verified: https://scholar.google.com/citations?user=YF0Hy1sAAAAJ&hl=en . Eight 2024–2026 works have been added using this identity and publisher/arXiv metadata.
-- The ICAPS 2022 paper title and link were corrected using the official proceedings: https://ojs.aaai.org/index.php/ICAPS/article/view/19850 .
-- The MADT title follows the latest version at https://arxiv.org/abs/2112.02845 .
-- The original AAMAS 2023 placeholder title/authors remain pending confirmation. Its incorrect link to the GCS 2022 paper has been removed. M3 is a likely match, but that mapping has not been confirmed.
-- Both original CV files remain unchanged. The English filename dates from 2023 and may need a new version.
-- The contact email and postal address are retained from the original page; their current status was not reconfirmed. The phrase “route packaging” is a spelling correction of the original “route packeging”; its intended technical wording may need review.
-- These changes are proposed for review in a draft pull request. Merging, deployment, and hosting migration are outside this update.
-- Static checks and filter logic tests passed. Visual/browser QA could not run in this environment: Chromium startup cannot create a required Unix socket, and the available cloud browser cannot access the local preview server. Desktop/mobile screenshots and rendered accessibility/contrast checks therefore remain unverified.
+- PhD completion (2024) and ERNIE Thinking experience (2024–2025) were confirmed by Linghui Meng. CASIA is labeled as education, not a current employer.
+- Added the user-confirmed Qwen Team, Alibaba research internship (2023–2024), RLHF and multi-agent learning, mentored by Junyang Lin. Added the Microsoft Research Asia speech-research internship (early–late 2020), mentored by Xu Tan, as confirmed by Linghui Meng. No exact months were inferred.
+- ERNIE Thinking uses the user-requested wording: “Worked on integrating reinforcement learning (RL) updates into the ERNIE Thinking model.”
+- About follows the user-confirmed chronology from 2019 graduation through the ERNIE Bot (Wenxin Yiyan) Sys2 team work on RL for subjective and objective tasks, including mathematics, coding and instruction following, until January 2026. No Sys2 start date or role after January 2026 is inferred, and the earlier ERNIE Thinking work is not assigned to Sys2 without confirmation.
+- Reviewer service is described historically; specific service years are not supplied.
+- The 2021–2022 news and old slides are archived. Football slides show 5 March 2021; GMM-HMM notes show 24 February–1 March 2020; the large-model talk is dated 17 March 2022. MARL and StarCraft slides have no verified date.
+- The English CV is a 2023 version and still describes PhD study. The Chinese CV is undated and contains historical submission statuses. Both remain unchanged and are explicitly described as historical.
+- The earlier institutional mailing address is kept in a collapsed archive disclosure, not presented as a current address. The active contact email is mengreinhold@163.com, explicitly updated by Linghui Meng on 9 October 2026. Archived PDFs retain their original contents. The historical mailing address has not been reconfirmed as current.
+- M3 replaces the obsolete AAMAS 2023 acceptance placeholder. The full title and authors are supported by the official proceedings and the 2023 CV: https://aamas.csc.liv.ac.uk/Proceedings/aamas2023/pdfs/p1624.pdf .
+- MADT now uses its 2023 journal version, title, author list and pagination (Machine Intelligence Research 20(2), 233–248), with its 2021 preprint retained as a secondary link: https://link.springer.com/article/10.1007/s11633-022-1383-7 .
+- The NSR survey remains correctly labeled an accepted manuscript in 2026. The publisher gives 24 September 2026: https://academic.oup.com/nsr/advance-article/doi/10.1093/nsr/nwag599/8834022 .
+- ERNIE 5.0 is a 2026 technical report: https://arxiv.org/abs/2602.04705 . A2R remains a 2025 preprint: https://arxiv.org/abs/2509.22044 .
+- Five 2024 papers retain their verified conference years. ViLaS's 2023 preprint date is distinct from its ICASSP 2024 publication: https://arxiv.org/abs/2305.19972 .
+- ICAPS 2022 metadata uses https://ojs.aaai.org/index.php/ICAPS/article/view/19850 . Other earlier venue years remain unchanged.
+- The publication list is not claimed to be exhaustive. No current employer, unknown date, or new employment claim was inferred.
 
-## New publication sources
+## Verification limits
 
-- A Survey on Parallel Reasoning: https://doi.org/10.1093/nsr/nwag599 (National Science Review, accepted manuscript, 2026)
-- ERNIE 5.0 Technical Report: https://arxiv.org/abs/2602.04705 (2026)
-- A2R: https://arxiv.org/abs/2509.22044 (2025)
-- A New Pre-Training Paradigm for Offline Multi-Agent Reinforcement Learning with Suboptimal Data: https://doi.org/10.1109/ICASSP48485.2024.10448500
-- UNeC: https://doi.org/10.1109/ICASSP48485.2024.10447360
-- ViLaS: https://arxiv.org/abs/2305.19972 and https://doi.org/10.1109/ICASSP48485.2024.10448450
-- Long Short-Term Reasoning Network with Theory of Mind for Efficient Multi-Agent Cooperation: https://doi.org/10.1109/IJCNN60899.2024.10650244
-- SA-MPF: https://doi.org/10.1109/IJCNN60899.2024.10650103
+The reference and currently deployed homepage were inspected visually in the cloud browser. The revised source passed static and filter-logic checks, but desktop/mobile browser rendering of the revised local file remains unverified: the cloud browser permits only HTTP(S) pages and rejected the local data-URL preview. Prior local Chromium startup was unavailable in this environment. No screenshot of this revision is represented as browser-verified. These checks do not verify deployment.
