@@ -48,10 +48,15 @@ for url in p.links + p.assets:
         local += 1
 assert 'prefers-reduced-motion: reduce' in source
 assert 'id="experience"' in source and 'href="#experience"' in source
-assert 'Led the integration of reinforcement learning (RL) updates into the ERNIE Thinking model.' in source
+assert 'Worked on integrating reinforcement learning (RL) updates into the ERNIE Thinking model.' in source
 assert 'skip-link' in source and 'aria-live="polite"' in source
 assert '<meta charset="utf-8">' in source
 assert 'name="viewport"' in source and 'name="description"' in source
 assert 'rel="canonical"' in source
 print(f'PASS: HTML nesting, unique IDs, one h1, {p.papers} publications, {local} local file references, anchors, SEO, and accessibility hooks.')
 print('This is a static check. Browser layout, contrast, and assistive-technology behavior require browser QA.')
+
+assert 'menglinghui2019@ia.ac.cn' not in source
+assert source.count('mailto:mengreinhold@163.com') == 2
+assert '>mengreinhold@163.com</a>' in source
+print('PASS: both active email links and displayed contact use mengreinhold@163.com.')
